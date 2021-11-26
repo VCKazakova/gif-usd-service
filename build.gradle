@@ -25,6 +25,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:3.0.5'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:2.6.0'
 }
 
 test {

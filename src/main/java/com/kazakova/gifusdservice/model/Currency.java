@@ -1,21 +1,20 @@
 package com.kazakova.gifusdservice.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Map;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Currency {
 
     private String disclaimer;
     private String license;
-    private LocalDateTime timestamp;
+    private Date timestamp;
     private String base;
     private Map<String, BigDecimal> rates;
 }

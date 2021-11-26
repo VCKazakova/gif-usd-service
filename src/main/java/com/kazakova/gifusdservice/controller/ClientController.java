@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ClientController {
 
-    private ExchangeCurrencyClient exchangeCurrencyClient;
+    private final ExchangeCurrencyClient exchangeCurrencyClient;
 
     @GetMapping("/{date}")
     public Currency getCurrencyByDate(@PathVariable("date") String date) {
