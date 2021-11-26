@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient(value = "exchangecurrency", url = "https://openexchangerates.org")
 public interface ExchangeCurrencyClient {
 
-    @GetMapping("/api/historical/{date}.json?app_id=cfe27e3b63004449900c92e3de48b3eb&symbols=RUB")
-    Currency getCurrencyByDate(@PathVariable("date") String date);
+    @GetMapping("/api/historical/{date}.json?app_id=cfe27e3b63004449900c92e3de48b3eb&symbols={symbols}")
+    Currency getCurrencyByDate(@PathVariable("date") String date, @PathVariable("symbols") String symbols);
 }

@@ -13,9 +13,9 @@ public class ClientController {
 
     private final ExchangeCurrencyClient exchangeCurrencyClient;
 
-    @GetMapping("/{date}")
-    public Currency getCurrencyByDate(@PathVariable("date") String date) {
-        Currency response = exchangeCurrencyClient.getCurrencyByDate(date);
+    @GetMapping("/{date}/{symbols}")
+    public Currency getCurrencyByDate(@PathVariable("date") String date, @PathVariable("symbols") String symbols) {
+        Currency response = exchangeCurrencyClient.getCurrencyByDate(date, symbols);
         return new Currency(response.getDisclaimer(), response.getLicense(), response.getTimestamp(), response.getBase(), response.getRates());
     }
 }
