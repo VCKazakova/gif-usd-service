@@ -14,10 +14,10 @@ public interface GifFeignClient extends CommonGifClient {
     @GetMapping("/search?api_key=u8PWXRI3VIgnUhHPeCW99zq1kurE9vLf&q={richQ}&limit=1")
     ResponseEntity<Map> getRichGif(@PathVariable ("richQ") String richQ);
 
-    @GetMapping("//search?api_key=u8PWXRI3VIgnUhHPeCW99zq1kurE9vLf&q={brokeQ}&limit=1")
+    @GetMapping("/search?api_key=u8PWXRI3VIgnUhHPeCW99zq1kurE9vLf&q={brokeQ}&limit=1")
     ResponseEntity<Map> getBrokeGif(@PathVariable ("brokeQ") String brokeQ);
 
-    @GetMapping("//search?api_key=u8PWXRI3VIgnUhHPeCW99zq1kurE9vLf&q={noChangeQ}&limit=1")
+    @GetMapping("/search?api_key=u8PWXRI3VIgnUhHPeCW99zq1kurE9vLf&q={noChangeQ}&limit=1")
     ResponseEntity<Map> getNoChangeGif(@PathVariable ("noChangeQ") String noChangeQ);
 
 //    @GetMapping("/{richGifId}")
