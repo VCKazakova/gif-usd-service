@@ -1,21 +1,33 @@
 package com.kazakova.gifusdservice.controller;
 
-import com.kazakova.gifusdservice.feignclient.ExchangeCurrencyClient;
-import com.kazakova.gifusdservice.model.Currency;
+import com.kazakova.gifusdservice.service.ExchangeService;
+import com.kazakova.gifusdservice.service.GifService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
 public class ClientController {
 
-    private final ExchangeCurrencyClient exchangeCurrencyClient;
+    private final ExchangeService exchangeService;
+    private final GifService gifService;
 
-    @GetMapping("/{date}/{symbols}")
-    public Currency getCurrencyByDate(@PathVariable("date") String date, @PathVariable("symbols") String symbols) {
-        Currency response = exchangeCurrencyClient.getCurrencyByDate(date, symbols);
-        return new Currency(response.getDisclaimer(), response.getLicense(), response.getTimestamp(), response.getBase(), response.getRates());
+    @GetMapping("/gif")
+    public ResponseEntity<Map> getSuitableGif() {
+        int coff = exchangeService.compareCurrency();
+        switch (coff) {
+            case 1:
+                return gifService.getRichGif();
+            case -1:
+                return gifService.getBrokeGif();
+            case 0:
+                return gifService.getNoChangeGif();
+        }
+        return null;
     }
+
 }
