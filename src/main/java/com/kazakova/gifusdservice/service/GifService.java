@@ -1,13 +1,11 @@
 package com.kazakova.gifusdservice.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kazakova.gifusdservice.feignclient.CommonGifClient;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -28,7 +26,7 @@ public class GifService {
 
     }
 
-    public String getGif(int coff) throws JsonProcessingException, ParseException {
+    public String getGif(int coff) throws ParseException {
         String responseEntity = commonGifClient.getGif(mapOfCoff.get(coff));
         JSONParser jsonParser = new JSONParser();
         JSONObject jB = (JSONObject) jsonParser.parse(responseEntity);
