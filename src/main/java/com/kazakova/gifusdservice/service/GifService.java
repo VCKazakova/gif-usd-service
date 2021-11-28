@@ -2,6 +2,10 @@ package com.kazakova.gifusdservice.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kazakova.gifusdservice.feignclient.CommonGifClient;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,15 +28,13 @@ public class GifService {
 
     }
 
-    public String getGif(int coff) throws JsonProcessingException {
-        ResponseEntity<Map> responseEntity = commonGifClient.getGif(mapOfCoff.get(coff));
-        Map<String, String> responseEntityBody = responseEntity.getBody();
-        String jsonResponseEntity = responseEntityBody.get("data");
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        List<Gif> listGif = objectMapper.readValue(jsonResponseEntity, new TypeReference<>() {
-//        });
-//        return listGif.get(1).getData().get("embed_url");
-        return null;
+    public String getGif(int coff) throws JsonProcessingException, ParseException {
+        String responseEntity = commonGifClient.getGif(mapOfCoff.get(coff));
+        JSONParser jsonParser = new JSONParser();
+        JSONObject jB = (JSONObject) jsonParser.parse(responseEntity);
+        JSONArray jsonArray = (JSONArray) jB.get("data");
+        JSONObject jsonObject = (JSONObject) jsonArray.get(0);
+        return jsonObject.get("embed_url").toString();
     }
 
 }

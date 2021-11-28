@@ -16,7 +16,7 @@ public interface CommonGifClient {
     ResponseEntity<Map> getNoChangeGif(String q);
 
     @GetMapping(value = "/search?api_key=u8PWXRI3VIgnUhHPeCW99zq1kurE9vLf&q={tag}&limit=1")
-    ResponseEntity<Map> getGif(@PathVariable("tag") String tag);
+    String getGif(@PathVariable("tag") String tag);
 
 //    ResponseEntity<Map> getRichGif(String richGifId);
 //
