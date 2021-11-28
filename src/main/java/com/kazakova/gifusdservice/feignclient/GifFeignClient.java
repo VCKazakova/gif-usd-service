@@ -2,6 +2,6 @@ package com.kazakova.gifusdservice.feignclient;
 
 import org.springframework.cloud.openfeign.FeignClient;
 
-@FeignClient(name = "gif", url = "https://api.giphy.com/v1/gifs")
+@FeignClient(name = "gif", url = "${gif.client.url}")
 public interface GifFeignClient extends CommonGifClient {
 }

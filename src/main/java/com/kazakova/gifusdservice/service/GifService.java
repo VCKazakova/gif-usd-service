@@ -20,9 +20,9 @@ public class GifService {
     private static final Map<Integer, String> mapOfCoff = new HashMap<>();
 
     {
-        mapOfCoff.put(1, "rich");
-        mapOfCoff.put(-1, "broke");
-        mapOfCoff.put(0, "travolta");
+        mapOfCoff.put(1, "${gif.rich}");
+        mapOfCoff.put(-1, "${gif.broke");
+        mapOfCoff.put(0, "${gif.zero}");
 
     }
 
