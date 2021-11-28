@@ -21,9 +21,9 @@ public class ExchangeService {
     private String tomorrowDate = ZonedDateTime.now().minusDays(1).toLocalDate().toString();
 
 
-    public int compareCurrency() {
-        thisDay = commonExchangeClient.getCurrencyByDate(todayDate, "RUB");
-        prevDay = commonExchangeClient.getCurrencyByDate(tomorrowDate, "RUB");
-        return thisDay.getRates().get("RUB").compareTo(prevDay.getRates().get("RUB"));
+    public int compareCurrency(String symbols) {
+        thisDay = commonExchangeClient.getCurrencyByDate(todayDate, symbols);
+        prevDay = commonExchangeClient.getCurrencyByDate(tomorrowDate, symbols);
+        return thisDay.getRates().get(symbols).compareTo(prevDay.getRates().get(symbols));
     }
 }
