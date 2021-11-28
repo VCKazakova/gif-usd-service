@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 public interface CommonGifClient {
 
-    @GetMapping(value = "/search?api_key=u8PWXRI3VIgnUhHPeCW99zq1kurE9vLf&q={tag}&limit=1")
+    @GetMapping(value = "/random?api_key=u8PWXRI3VIgnUhHPeCW99zq1kurE9vLf&q={tag}")
     String getGif(@PathVariable("tag") String tag);
 
 }
