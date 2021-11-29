@@ -1,9 +1,11 @@
-package com.kazakova.gifusdservice.feignclient;
+package com.kazakova.gifusdservice.service;
 
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import com.kazakova.gifusdservice.feignclient.CommonExchangeClient;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +22,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { WireMockConfig.class })
-public class GifFeignClientTest {
+@ContextConfiguration(classes = {WireMockConfig.class})
+@DisplayName("ExchangeService должен")
+public class ExchangeServiceTest {
 
 
     @Autowired
     private WireMockServer mockExchangeService;
 
     @Autowired
-    private CommonGifClient commonGifClient;
+    private CommonExchangeClient commonExchangeClient;
 
     @BeforeEach
     void setUp() throws IOException {
@@ -36,16 +39,16 @@ public class GifFeignClientTest {
     }
 
     @Test
-    public void whenGetGif_thenGifShouldBeReturned() {
-        Assertions.assertFalse(commonGifClient.getGif("rich").isEmpty());
+    @DisplayName("Возвращать курс USD, относительно выбранной валюты")
+    public void whenCompareCurrency_thenCurrencyShouldBeReturned() {
+        Assertions.assertFalse(commonExchangeClient.getCurrencyByDate("2021-11-23", "RUB").getRates().isEmpty());
     }
 
     @Test
-    public void whenGetGif_thenTheCorrectContainsKeyShouldBeReturned() {
-        assertTrue(commonGifClient.getGif("rich")
-                .contains("data"));
-        assertTrue(commonGifClient.getGif("rich")
-                .contains("embed_url"));
+    @DisplayName("Возвращать ключ, содержащийся в json объекте")
+    public void whenCompareCurrency_thenTheCorrectContainsKeyShouldBeReturned() {
+        assertTrue(commonExchangeClient.getCurrencyByDate("2021-11-29", "RUB").getRates()
+                .containsKey("RUB"));
     }
 
 

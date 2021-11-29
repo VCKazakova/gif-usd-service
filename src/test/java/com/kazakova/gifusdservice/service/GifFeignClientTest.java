@@ -1,7 +1,8 @@
-package com.kazakova.gifusdservice.feignclient;
+package com.kazakova.gifusdservice.service;
 
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import com.kazakova.gifusdservice.feignclient.CommonGifClient;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,14 +22,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { WireMockConfig.class })
-public class ExchangeCurrencyClientTest {
+public class GifFeignClientTest {
 
 
     @Autowired
     private WireMockServer mockExchangeService;
 
     @Autowired
-    private CommonExchangeClient commonExchangeClient;
+    private CommonGifClient commonGifClient;
 
     @BeforeEach
     void setUp() throws IOException {
@@ -36,14 +37,16 @@ public class ExchangeCurrencyClientTest {
     }
 
     @Test
-    public void whenCompareCurrency_thenCurrencyShouldBeReturned() {
-        Assertions.assertFalse(commonExchangeClient.getCurrencyByDate("2021-11-23", "RUB").getRates().isEmpty());
+    public void whenGetGif_thenGifShouldBeReturned() {
+        Assertions.assertFalse(commonGifClient.getGif("rich").isEmpty());
     }
 
     @Test
-    public void whenCompareCurrency_thenTheCorrectContainsKeyShouldBeReturned() {
-        assertTrue(commonExchangeClient.getCurrencyByDate("2021-11-29", "RUB").getRates()
-                .containsKey("RUB"));
+    public void whenGetGif_thenTheCorrectContainsKeyShouldBeReturned() {
+        assertTrue(commonGifClient.getGif("rich")
+                .contains("data"));
+        assertTrue(commonGifClient.getGif("rich")
+                .contains("embed_url"));
     }
 
 

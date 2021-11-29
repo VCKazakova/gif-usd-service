@@ -1,4 +1,4 @@
-package com.kazakova.gifusdservice.feignclient;
+package com.kazakova.gifusdservice.service;
 
 
 import com.github.tomakehurst.wiremock.WireMockServer;
