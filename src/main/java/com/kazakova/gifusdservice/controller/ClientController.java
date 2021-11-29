@@ -22,6 +22,7 @@ public class ClientController {
 
     @RequestMapping(value = "/compare_currency/{symbols}")
     public void compareCurrency(HttpServletResponse response, @PathVariable("symbols") String symbols) {
+        log.info(">> ClientController compareCurrency  symbols={}", symbols);
         int coefficient = exchangeService.compareCurrency(symbols);
         try {
             String url = gifService.getGif(coefficient);
