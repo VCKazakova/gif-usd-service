@@ -25,14 +25,14 @@ public class ExchangeCurrencyClientTest {
 
 
     @Autowired
-    private WireMockServer mockBooksService;
+    private WireMockServer mockExchangeService;
 
     @Autowired
     private CommonExchangeClient commonExchangeClient;
 
     @BeforeEach
     void setUp() throws IOException {
-        CurrencyMocks.setupMockExchangeResponse(mockBooksService);
+        CurrencyMocks.setupMockExchangeResponse(mockExchangeService);
     }
 
     @Test
