@@ -45,6 +45,4 @@ public class ClientControllerTest {
         mockMvc.perform(request)
                 .andExpect(status().is3xxRedirection());
     }
-
-
 }

@@ -13,16 +13,13 @@ public class ExchangeService {
     @Autowired
     private CommonExchangeClient commonExchangeClient;
 
-    private Currency tomorrow;
-    private Currency today;
-
-    private String todayDate = ZonedDateTime.now().toLocalDate().toString();
-    private String tomorrowDate = ZonedDateTime.now().minusDays(1).toLocalDate().toString();
+    private final String todayDate = ZonedDateTime.now().toLocalDate().toString();
+    private final String tomorrowDate = ZonedDateTime.now().minusDays(1).toLocalDate().toString();
 
 
     public int compareCurrency(String symbols) {
-        today = commonExchangeClient.getCurrencyByDate(todayDate, symbols);
-        tomorrow = commonExchangeClient.getCurrencyByDate(tomorrowDate, symbols);
+        Currency today = commonExchangeClient.getCurrencyByDate(todayDate, symbols);
+        Currency tomorrow = commonExchangeClient.getCurrencyByDate(tomorrowDate, symbols);
         return today.getRates().get(symbols).compareTo(tomorrow.getRates().get(symbols));
     }
 }

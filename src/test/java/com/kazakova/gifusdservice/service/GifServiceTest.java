@@ -35,7 +35,7 @@ public class GifServiceTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        CurrencyMocks.setupMockExchangeResponse(mockExchangeService);
+       GifMocks.setupGifExchangeResponse(mockExchangeService);
     }
 
     @Test

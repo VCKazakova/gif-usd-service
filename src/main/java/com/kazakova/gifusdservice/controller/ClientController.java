@@ -20,18 +20,21 @@ public class ClientController {
     private final ExchangeService exchangeService;
     private final GifService gifService;
 
+    /**
+     * @param response
+     * @param symbols
+     */
     @RequestMapping(value = "/compare_currency/{symbols}")
     public void compareCurrency(HttpServletResponse response, @PathVariable("symbols") String symbols) {
         log.info(">> ClientController compareCurrency  symbols={}", symbols);
-        int coefficient = exchangeService.compareCurrency(symbols);
         try {
+            int coefficient = exchangeService.compareCurrency(symbols);
             String url = gifService.getGif(coefficient);
             response.sendRedirect(url);
         } catch (ParseException exception) {
-            log.info("<< ClientController compareCurrency catch ParseException while parsing JSON");
-            exception.printStackTrace();
+            log.error("<< ClientController compareCurrency catch ParseException while parsing JSON", exception);
         } catch (IOException exception) {
-            log.info("<< ClientController compareCurrency catch IOException while sending redirect");
+            log.error("<< ClientController compareCurrency catch IOException while sending redirect");
             exception.printStackTrace();
         }
     }
