@@ -5,6 +5,7 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import com.kazakova.gifusdservice.feignclient.CommonGifClient;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @EnableConfigurationProperties
+@DisplayName("GifService должен")
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { WireMockConfig.class })
-public class GifFeignClientTest {
+@ContextConfiguration(classes = {WireMockConfig.class})
+public class GifServiceTest {
 
 
     @Autowired
@@ -37,11 +39,13 @@ public class GifFeignClientTest {
     }
 
     @Test
+    @DisplayName("Возвращать json, относительно выбранного тэга")
     public void whenGetGif_thenGifShouldBeReturned() {
         Assertions.assertFalse(commonGifClient.getGif("rich").isEmpty());
     }
 
     @Test
+    @DisplayName("Возвращать элементы, содержащиеся в json объекте")
     public void whenGetGif_thenTheCorrectContainsKeyShouldBeReturned() {
         assertTrue(commonGifClient.getGif("rich")
                 .contains("data"));
