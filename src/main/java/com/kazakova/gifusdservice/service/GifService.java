@@ -16,17 +16,16 @@ public class GifService {
     @Autowired
     private CommonGifClient commonGifClient;
 
-    private static final Map<Integer, String> mapOfCoff = new HashMap<>();
+    private static final Map<Integer, String> mapOfCoefficient = new HashMap<>();
 
     {
-        mapOfCoff.put(1, "${gif.rich}");
-        mapOfCoff.put(-1, "${gif.broke");
-        mapOfCoff.put(0, "${gif.zero}");
-
+        mapOfCoefficient.put(1, "${gif.rich}");
+        mapOfCoefficient.put(-1, "${gif.broke");
+        mapOfCoefficient.put(0, "${gif.zero}");
     }
 
-    public String getGif(int coff) throws ParseException {
-        String responseEntity = commonGifClient.getGif(mapOfCoff.get(coff));
+    public String getGif(int coefficient) throws ParseException {
+        String responseEntity = commonGifClient.getGif(mapOfCoefficient.get(coefficient));
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject) jsonParser.parse(responseEntity);
         JSONObject data = (JSONObject) jsonObject.get("data");

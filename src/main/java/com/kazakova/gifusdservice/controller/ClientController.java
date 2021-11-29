@@ -20,8 +20,8 @@ public class ClientController {
 
     @RequestMapping(value = "/compare_currency/{symbols}")
     public void compareCurrency(HttpServletResponse response, @PathVariable("symbols") String symbols) throws ParseException, IOException {
-        int coff = exchangeService.compareCurrency(symbols);
-        String url = gifService.getGif(coff);
+        int coefficient = exchangeService.compareCurrency(symbols);
+        String url = gifService.getGif(coefficient);
         response.sendRedirect(url);
     }
 }

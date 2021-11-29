@@ -18,7 +18,4 @@ public class Currency {
     private String base;
     private Map<String, BigDecimal> rates;
 
-    public Currency(Map<String, BigDecimal> rates) {
-        this.rates = rates;
-    }
 }

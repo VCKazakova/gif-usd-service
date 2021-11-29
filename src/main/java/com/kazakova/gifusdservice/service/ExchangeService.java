@@ -4,7 +4,6 @@ import com.kazakova.gifusdservice.feignclient.CommonExchangeClient;
 import com.kazakova.gifusdservice.model.Currency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.ZonedDateTime;
 
@@ -14,16 +13,16 @@ public class ExchangeService {
     @Autowired
     private CommonExchangeClient commonExchangeClient;
 
-    private Currency prevDay;
-    private Currency thisDay;
+    private Currency tomorrow;
+    private Currency today;
 
     private String todayDate = ZonedDateTime.now().toLocalDate().toString();
     private String tomorrowDate = ZonedDateTime.now().minusDays(1).toLocalDate().toString();
 
 
     public int compareCurrency(String symbols) {
-        thisDay = commonExchangeClient.getCurrencyByDate(todayDate, symbols);
-        prevDay = commonExchangeClient.getCurrencyByDate(tomorrowDate, symbols);
-        return thisDay.getRates().get(symbols).compareTo(prevDay.getRates().get(symbols));
+        today = commonExchangeClient.getCurrencyByDate(todayDate, symbols);
+        tomorrow = commonExchangeClient.getCurrencyByDate(tomorrowDate, symbols);
+        return today.getRates().get(symbols).compareTo(tomorrow.getRates().get(symbols));
     }
 }
