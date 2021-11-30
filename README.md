@@ -6,9 +6,9 @@ gif-usd-service возвращает рандомный gif-файл в зави
 ***
 
 # В файл application.properties вынесены настройки проекта:
-exchange.url - url для доступа к https://openexchangerates.org/
-gif.url - url для доступа к https://giphy.com/
-gif.rich, gif.broke, gif.zero - тэги для поиска и возврата рандомного gif-файла
+1. exchange.url - url для доступа к https://openexchangerates.org/;
+2. gif.url - url для доступа к https://giphy.com/;
+3. gif.rich, gif.broke, gif.zero - тэги для поиска и возврата рандомного gif-файла;
 
 ***
 
