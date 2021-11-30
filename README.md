@@ -1,9 +1,6 @@
-# Краткое описание сервиса: 
 Service:                   |  Краткое описание:
 :-------------------------:|:-------------------------:
-![Image alt](https://github.com/VCKazakova/image/raw/main/image.png)  | возвращает рандомный gif-файл в зависимости от того, как изменился курс USD относительно                                                                           вчерашнего дня.
-                                                                        Курс USD сервис получает с ресурса: https://openexchangerates.org/.
-                                                                        Если курс стал выше, вернуть gif-файл с ресура: https://giphy.com/ по тэгу "rich", если                                                                           ниже - тэг "broke".
+![Image alt](https://github.com/VCKazakova/image/raw/main/image.png)  | возвращает рандомный gif-файл в зависимости от того, как изменился курс USD относительно                                                                           вчерашнего дня. Курс USD сервис получает с ресурса: https://openexchangerates.org/. Если курс стал выше, вернуть gif-файл с ресура: https://giphy.com/ по тэгу "rich", если                                                                           ниже - тэг "broke".
 
 
 
