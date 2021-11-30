@@ -21,8 +21,12 @@ public class ClientController {
     private final GifService gifService;
 
     /**
-     * @param response
-     * @param symbols
+     * @param response - отпределяет ответ клиенту
+     * @param symbols  - символ валюты, передающийся в endpoint (строка, example: RUB)
+     *                 метод compareCurrency - запускает сравнение сегодняшнего и вчерашнего курса валют;
+     *                 реализует перенаправление на подходящий gif-файл
+     * @throws ParseException (org.json.simple.parser) - может быть выбрашено во время парсинга JSON
+     * @throws IOException - может быть выбрашено во время перенаправления на страницу с gif-файлом
      */
     @RequestMapping(value = "/compare_currency/{symbols}")
     public void compareCurrency(HttpServletResponse response, @PathVariable("symbols") String symbols) {
@@ -31,11 +35,8 @@ public class ClientController {
             int coefficient = exchangeService.compareCurrency(symbols);
             String url = gifService.getGif(coefficient);
             response.sendRedirect(url);
-        } catch (ParseException exception) {
-            log.error("<< ClientController compareCurrency catch ParseException while parsing JSON", exception);
-        } catch (IOException exception) {
-            log.error("<< ClientController compareCurrency catch IOException while sending redirect");
-            exception.printStackTrace();
+        } catch (Exception exception) {
+            log.error("<< ClientController compareCurrency catch exception {} while parsing JSON or redirecting", exception.getClass().getName());
         }
     }
 }
