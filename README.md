@@ -1,5 +1,7 @@
-# Краткое описание сервиса:
-![Image alt](https://github.com/VCKazakova/image/raw/main/image2.png)
+# Краткое описание сервиса: 
+***
+![Image alt](https://github.com/VCKazakova/image/raw/main/image.png)
+***
 gif-usd-service возвращает рандомный gif-файл в зависимости от того, как изменился курс USD относительно вчерашнего дня.
 Курс USD сервис получает с ресурса: https://openexchangerates.org/.
 Если курс стал выше, вернуть gif-файл с ресура: https://giphy.com/ по тэгу "rich", если ниже - тэг "broke".
