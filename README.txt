@@ -1,17 +1,17 @@
-Краткое описание сервиса:
+## ___Краткое описание сервиса:___
 gif-usd-service возвращает рандомный gif-файл в зависимости от того, как изменился курс USD относительно вчерашнего дня.
 Курс USD сервис получает с ресурса: https://openexchangerates.org/.
 Если курс стал выше, вернуть gif-файл с ресура: https://giphy.com/ по тэгу "rich", если ниже - тэг "broke".
-
-В файл application.properties вынесены настройки проекта:**
+***
+## ___В файл application.properties вынесены настройки проекта:___
 exchange.url - url для доступа к https://openexchangerates.org/
 gif.url - url для доступа к https://giphy.com/
 gif.rich, gif.broke, gif.zero - тэги для поиска и возврата рандомного gif-файла
-
-Технологии:
+***
+## ___Технологии:___
 SpringBoot, Gradle, FeignClient, Lombok, JsonSimple, WireMock
-
-Запуск проекта:
+***
+## ___Запуск проекта:___
 1. Скачать zip архив с GitHub
 2. Распаковать в нужной директории
 3. Открыть при помощи IntelliJ IDEA
