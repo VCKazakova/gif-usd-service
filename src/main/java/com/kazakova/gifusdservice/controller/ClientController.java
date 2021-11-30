@@ -26,7 +26,7 @@ public class ClientController {
      *                 метод compareCurrency - запускает сравнение сегодняшнего и вчерашнего курса валют;
      *                 реализует перенаправление на подходящий gif-файл
      * @throws ParseException (org.json.simple.parser) - может быть выбрашено во время парсинга JSON
-     * @throws IOException - может быть выбрашено во время перенаправления на страницу с gif-файлом
+     * @throws IOException    - может быть выбрашено во время перенаправления на страницу с gif-файлом
      */
     @RequestMapping(value = "/compare_currency/{symbols}")
     public void compareCurrency(HttpServletResponse response, @PathVariable("symbols") String symbols) {

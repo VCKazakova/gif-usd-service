@@ -10,7 +10,6 @@ public interface CommonGifClient {
      * @return String - url подходящего gif-файла
      */
 
-
     @GetMapping(value = "/random?api_key=u8PWXRI3VIgnUhHPeCW99zq1kurE9vLf&q={tag}")
     String getGif(@PathVariable("tag") String tag);
 
