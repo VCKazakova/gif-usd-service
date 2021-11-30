@@ -1,5 +1,5 @@
 # Краткое описание сервиса:
-![Image alt](https://github.com/VCKazakova/image/raw/master/image/Снимок экрана от 2021-11-30 11-48-06.png)
+![Image alt](https://github.com/VCKazakova/image/raw/master/image/image.png)
 gif-usd-service возвращает рандомный gif-файл в зависимости от того, как изменился курс USD относительно вчерашнего дня.
 Курс USD сервис получает с ресурса: https://openexchangerates.org/.
 Если курс стал выше, вернуть gif-файл с ресура: https://giphy.com/ по тэгу "rich", если ниже - тэг "broke".
